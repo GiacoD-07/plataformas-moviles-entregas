@@ -1,6 +1,9 @@
-*{
+body{
     background-color: #222;
     color: #ee6;
+    padding: 20px;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
     
 }
 
@@ -23,7 +26,7 @@ h1:hover{
 
 strong{
     
-    border-bottom-width: 3px;
+    
     border-bottom-style:inset;
     border-bottom-color: white;
 
@@ -34,23 +37,26 @@ strong{
 }
 
 .light-side{
-    color:rgb(0, 0, 247);
+    color:#66f;
 }
 
 .dark-side{
     color: #f33;
 }
 
-.og-trilogy{
+#og-trilogy{
     list-style-type: circle;
 }
 
-.movies-list{
-    padding-left: 10%;
-    margin-top: 10%;
+.movies-list li:nth-child(odd){
+    background-color: #111;
 }
 
-strong, p.formato{
+.movies-list li:nth-child(even){
+    background-color: #333;
+}
+
+p:first-of-type::first-line{
     color: #efe;
 }
 
@@ -60,9 +66,4 @@ a:link{
 }
 a:visited{
     color: #808080;
-}
-h3{
-    mix-blend-mode:normal();
-    background-color: #111;
-    background-color: #333;
 }
