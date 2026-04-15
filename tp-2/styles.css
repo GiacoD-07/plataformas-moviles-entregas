@@ -49,7 +49,7 @@ strong{
 }
 
 .movies-list:last-of-type li:last-child{
- margin-top: 15px;
+ margin-top: 20px;
 } 
 
 .movies-list li:nth-child(odd){
