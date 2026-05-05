@@ -1,0 +1,67 @@
+/*Punto 1*/
+@media screen and (min-width: 401px) {
+    body {
+        background-color: rgb(40,60,80);
+    }    
+}
+/*Punto 2*/
+@media (min-width: 800px){
+    h1 {
+        text-align: center;
+    }
+}
+/*Punto 3*/
+@media (orientation: landscape){
+    article{
+        max-width: 50ch;
+    }
+} 
+/*Punto 4*/
+@media screen and (min-width: 200px){
+    .h1{
+        background-color: aliceblue;
+    }
+}
+/*Punto 5*/
+@media print{
+    *{
+        font-family: serif;
+    }
+}
+/*Punto 6*/
+@media (prefers-color-scheme: light){
+  body, h1{
+    color: #111;
+    background-color: #DDD;
+  }
+}
+
+/*Punto 7*/
+@media screen and (hover: none){
+    a {
+        color: #212;
+        padding: 2px 5px;
+    }
+}
+
+/*Punto 8*/
+@media screen and (min-width: 800px) and (max-width: 900px){
+    img{
+        display: none;
+    }
+}
+
+/*Punto 9*/
+@media screen and (min-width: 200px) and (max-width: 400px) {
+    img{
+        height: 400px;
+        object-fit: cover;
+    }
+}
+
+/*Punto 10*/
+@media (resolution > 2dppx) {
+    article{
+        background-color: #667;
+    }
+}
