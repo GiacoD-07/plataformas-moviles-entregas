@@ -363,69 +363,108 @@
 
             <!-- NOMBRE -->
 
-            <div class="mb-3">
+            <div class="mb-3 row aling-items-center">
 
-                <label class="form-label">
+                <label class="col-form-label col-auto text-aling">
                     Nombre
                 </label>
-
-                <input type="text"
-                       class="form-control"
+                <div class="col">
+                    <input type="text"
+                       class="form-control text-start"
                        placeholder="Ingrese su nombre">
+                </div>
+                
 
             </div>
 
             <!-- GMAIL -->
 
-            <div class="mb-3">
+            <div class="mb-3 row aling-items-center">
 
-                <label class="form-label">
+                <label class="col-form-label col-auto text-aling">
                     Gmail
                 </label>
 
-                <input type="email"
-                       class="form-control"
-                       placeholder="Ingrese su gmail">
+                <div class="col">
+                    <input type="text"
+                       class="form-control text-start"
+                       placeholder="Ingrese su email">
+                </div>
 
             </div>
 
             <!-- COMENTARIO -->
 
-            <div class="mb-3">
+            <div class="mb-3 row aling-items-center">
 
-                <label class="form-label">
+                <label class="col-form-label col-auto text-aling">
                     Comentario
                 </label>
-
-                <textarea class="form-control"
+                <div class="col">
+                    <textarea class="form-control text-start"
                           rows="4"
                           placeholder="Escriba un comentario"></textarea>
+                </div>
+                
 
             </div>
 
             <!-- BOTONES -->
+            <div class="col-12 col-sm-8 col-md-6">
+                <div class="d-flex justify-content-end justify-content-sm-center gap-2">
+                    <button type="submit" class="btn btn-primary">
+                    Enviar
+                    </button>
 
-            <button type="submit"
-                    class="btn btn-primary">
-
-                Enviar
-
-            </button>
-
-            <button type="reset"
-                    class="btn btn-secondary">
-
-                Limpiar
-
-            </button>
+                    <button type="reset class="btn btn-secondary">
+                    Limpiar
+                    </button>
+                </div>
+            
 
         </form>
-
     </div>
-
+</div>
+</div>
+</div>
 </div>
 
+<!--FOOTER-->
 
+<footer class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                Plataformas móviles
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            Alumno
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+</footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
 
