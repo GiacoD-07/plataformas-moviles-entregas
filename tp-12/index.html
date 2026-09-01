@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editor de Texto - DOM y JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <style>
+        /* Transición suave para los cambios de estilo en el texto */
+        #texto {
+            transition: all 0.2s ease-in-out;
+            min-height: 80px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-1 my-sm-2 my-md-4 my-lg-5">
+        <h1>Editor de Texto</h1>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                
+                <h2>Vista Previa del Texto</h2>
+                <div class="p-3 mb-3 bg-light border rounded">
+                    <!-- Elemento de texto a modificar -->
+                    <p class="texto m-0" id="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum auctor libero, vel imperdiet est. Etiam blandit facilisis ex, nec cursus metus pharetra quis. Fusce imperdiet nisl nibh, ac aliquet ante elementum vitae.</p>
+                </div>
+                
+                <hr class="hr">
+
+                <h2>Edición y Opciones de Formato</h2>
+                
+                <!-- Campo de entrada para editar el texto (Consigna 3) -->
+                <div class="mb-3">
+                    <label for="input-texto" class="form-label fw-bold">Modificar Texto:</label>
+                    <textarea id="input-texto" class="form-control" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum auctor libero, vel imperdiet est. Etiam blandit facilisis ex, nec cursus metus pharetra quis. Fusce imperdiet nisl nibh, ac aliquet ante elementum vitae.</textarea>
+                </div>
+
+                <!-- Modificadores de Tamaño y Color (Consigna 5 y Bonus) -->
+                <div class="row mb-4">
+                    <div class="col-12 col-md-6 mb-2">
+                        <label for="input-size" class="form-label">Tamaño del texto (px):</label>
+                        <input type="number" id="input-size" class="form-control" value="16" min="10" max="72">
+                    </div>
+                    <div class="col-12 col-md-6 mb-2">
+                        <label for="input-color" class="form-label">Color del texto:</label>
+                        <input type="color" id="input-color" class="form-control form-control-color w-100" value="#000000">
+                    </div>
+                </div>
+
+                <!-- Botones de estilo (Consigna 1, 2 y 4) -->
+                <label class="form-label fw-bold">Estilos:</label>
+                <div class="row">
+                    <div class="col-6 col-md-3 my-1">
+                        <button id="btn-negrita" class="btn d-block w-100 btn-primary" data-formato="negrita">
+                            Bold (Negrita)
+                        </button>
+                    </div>
+                    <div class="col-6 col-md-3 my-1">
+                        <button id="btn-cursiva" class="btn d-block w-100 btn-primary" data-formato="cursiva">
+                            Italic (Cursiva)
+                        </button>
+                    </div>
+                    <div class="col-6 col-md-3 my-1">
+                        <button id="btn-subrayado" class="btn d-block w-100 btn-primary" data-formato="subrayado">
+                            Underline (Subrayado)
+                        </button>
+                    </div>
+                    <!-- Nuevo Botón: Mayúsculas (Consigna 2) -->
+                    <div class="col-6 col-md-3 my-1">
+                        <button id="btn-mayusculas" class="btn d-block w-100 btn-primary" data-formato="mayusculas">
+                            Uppercase (Mayúsculas)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        
+        // Referencias a los elementos del DOM
+        const parrafoTexto = document.getElementById('texto');
+        const inputTexto = document.getElementById('input-texto');
+        const inputSize = document.getElementById('input-size');
+        const inputColor = document.getElementById('input-color');
+
+        /**
+         * Funcionalidad para editar el texto en tiempo real.
+         */
+        inputTexto.addEventListener('input', (e) => {
+            parrafoTexto.textContent = e.target.value;
+        });
+
+        /**
+         * Funcionalidad para modificar el tamaño del texto.
+         */
+        inputSize.addEventListener('input', (e) => {
+            parrafoTexto.style.fontSize = e.target.value + 'px';
+        });
+
+        /**
+         * Funcionalidad para modificar el color del texto.
+         */
+        inputColor.addEventListener('input', (e) => {
+            parrafoTexto.style.color = e.target.value;
+        });
+
+        /**
+         * Función auxiliar para cambiar el color del botón indicando su estado activo/inactivo
+         */
+        function alternarEstadoBoton(botonId, estaActivo) {
+            const boton = document.getElementById(botonId);
+            if (estaActivo) {
+                boton.classList.replace('btn-primary', 'btn-success');
+            } else {
+                boton.classList.replace('btn-success', 'btn-primary');
+            }
+        }
+
+        /**
+         * funcionNegrita()
+         */
+        function funcionNegrita() {
+            // Verifica si ya está en bold
+            const esNegrita = parrafoTexto.style.fontWeight === 'bold';
+            parrafoTexto.style.fontWeight = esNegrita ? 'normal' : 'bold';
+            alternarEstadoBoton('btn-negrita', !esNegrita);
+        }
+
+        /**
+         * funcionCursiva()
+         */
+        function funcionCursiva() {
+            const esCursiva = parrafoTexto.style.fontStyle === 'italic';
+            parrafoTexto.style.fontStyle = esCursiva ? 'normal' : 'italic';
+            alternarEstadoBoton('btn-cursiva', !esCursiva);
+        }
+
+        /**
+         * funcionSubrayado()
+         */
+        function funcionSubrayado() {
+            const esSubrayado = parrafoTexto.style.textDecoration === 'underline';
+            parrafoTexto.style.textDecoration = esSubrayado ? 'none' : 'underline';
+            alternarEstadoBoton('btn-subrayado', !esSubrayado);
+        }
+
+        /**
+         * funcionMayusculas() - Nuevo Estilo Añadido
+         */
+        function funcionMayusculas() {
+            const esMayuscula = parrafoTexto.style.textTransform === 'uppercase';
+            parrafoTexto.style.textTransform = esMayuscula ? 'none' : 'uppercase';
+            alternarEstadoBoton('btn-mayusculas', !esMayuscula);
+        }
+
+        function handlerBoton(e) {
+            // Obtiene el valor del atributo "data-formato" del botón que disparó el evento
+            const funcionBoton = e.target.dataset.formato;
+            
+            switch (funcionBoton) {
+                case 'negrita':
+                    funcionNegrita();
+                    break;
+                case 'cursiva':
+                    funcionCursiva();
+                    break;
+                case 'subrayado':
+                    funcionSubrayado();
+                    break;
+                case 'mayusculas':
+                    funcionMayusculas();
+                    break;
+            }
+        }
+
+        // Se asigna el listener a todos los botones que tienen la clase .btn y el atributo data-formato
+        document.querySelectorAll('button[data-formato]').forEach(e => e.addEventListener('click', handlerBoton));
+        
+    </script>
+</body>
+</html>
